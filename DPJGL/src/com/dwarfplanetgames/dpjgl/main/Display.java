@@ -43,6 +43,7 @@ public class Display extends Canvas implements Runnable {
 		while (running) {
 			long newTime = System.nanoTime();
 			if (newTime - startTime > 1000000000 / 60.0) {
+				startTime = newTime;
 				if (this.hasFocus())
 					core.update();
 			}
