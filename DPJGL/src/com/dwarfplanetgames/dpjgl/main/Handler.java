@@ -10,7 +10,7 @@ import java.awt.event.MouseMotionListener;
 public class Handler implements KeyListener, MouseListener, MouseMotionListener {
 	
 	public Point mouse;
-	public boolean[] buttons = new boolean[3];
+	public boolean[] buttons = new boolean[17];
 	public boolean[] keys = new boolean[6880];
 	
 	public Handler() {
@@ -20,12 +20,13 @@ public class Handler implements KeyListener, MouseListener, MouseMotionListener 
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
 		mouse.x = arg0.getX();
+		mouse.y = arg0.getY();
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		mouse.x = arg0.getX();
+		mouse.y = arg0.getY();
 	}
 
 	@Override
@@ -48,26 +49,22 @@ public class Handler implements KeyListener, MouseListener, MouseMotionListener 
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		buttons[arg0.getButton()] = true;
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		buttons[arg0.getButton()] = false;
 	}
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		keys[arg0.getKeyCode()] = true;
 	}
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		keys[arg0.getKeyCode()] = false;		
 	}
 
 	@Override
