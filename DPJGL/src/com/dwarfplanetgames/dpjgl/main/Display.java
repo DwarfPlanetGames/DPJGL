@@ -17,6 +17,7 @@ public class Display extends Canvas implements Runnable {
 	private boolean running = false;
 	private Core core;
 	private int threadSleep = 3;
+	public Handler handler;
 	
 	public Display(int width, int height, String title, Core core) {
 		this.width = width;
@@ -27,6 +28,10 @@ public class Display extends Canvas implements Runnable {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(this);
 		frame.setSize(width, height);
+		handler = new Handler();
+		addMouseListener(handler);
+		addMouseMotionListener(handler);
+		addKeyListener(handler);
 	}
 	
 	public synchronized void start() {

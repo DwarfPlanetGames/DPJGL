@@ -6,9 +6,11 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.LinkedList;
 
 public class Handler implements KeyListener, MouseListener, MouseMotionListener {
 	
+	public LinkedList<GameObject> objects = new LinkedList<GameObject>();
 	public Point mouse;
 	public boolean[] buttons = new boolean[17];
 	public boolean[] keys = new boolean[6880];
