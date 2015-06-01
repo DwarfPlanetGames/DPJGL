@@ -48,7 +48,7 @@ public class Flame extends GameObject {
 	}
 
 	public void tick() {
-		fireSeed = rand.nextLong();
+		fireSeed = display.time;
 	}
 
 }

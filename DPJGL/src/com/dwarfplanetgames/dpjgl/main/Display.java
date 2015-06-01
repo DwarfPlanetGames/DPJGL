@@ -18,6 +18,7 @@ public class Display extends Canvas implements Runnable {
 	private Core core;
 	private int threadSleep = 3;
 	public Handler handler;
+	public int time = 0;
 	
 	public Display(int width, int height, String title, Core core) {
 		this.width = width;
@@ -32,6 +33,7 @@ public class Display extends Canvas implements Runnable {
 		addMouseListener(handler);
 		addMouseMotionListener(handler);
 		addKeyListener(handler);
+		core.init(this);
 	}
 	
 	public synchronized void start() {
@@ -49,8 +51,14 @@ public class Display extends Canvas implements Runnable {
 			long newTime = System.nanoTime();
 			if (newTime - startTime > 1000000000 / 60.0) {
 				startTime = newTime;
-				if (this.hasFocus())
+				if (this.hasFocus()) {
 					core.update();
+					for (int i = 0; i < handler.objects.size(); i++) {
+						GameObject temp = handler.objects.get(i);
+						temp.update();
+					}
+				}
+				time++;
 			}
 			render();
 			try {
@@ -75,7 +83,10 @@ public class Display extends Canvas implements Runnable {
 		g.fillRect(0, 0, width, height);
 		g.setColor(Color.WHITE);
 		core.render(g);
-		
+		for (int i = 0; i < handler.objects.size(); i++) {
+			GameObject temp = handler.objects.get(i);
+			temp.render(g);
+		}
 		g.dispose();
 		bs.show();
 	}
