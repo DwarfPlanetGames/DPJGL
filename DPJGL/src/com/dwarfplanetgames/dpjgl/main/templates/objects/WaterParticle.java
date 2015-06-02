@@ -40,6 +40,10 @@ public class WaterParticle extends GameObject {
 					break;
 			}
 		}
+		if (x > display.getWidth() ||
+				y > display.getHeight()) {
+			dispose();
+		}
 	}
 
 	@Override

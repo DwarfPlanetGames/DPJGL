@@ -29,6 +29,10 @@ public abstract class GameObject {
 		tick();
 	}
 	
+	public void dispose() {
+		display.handler.objects.remove(this);
+	}
+	
 	public abstract void render(Graphics2D g);
 	public abstract void tick();
 	public abstract void unconditionalTick();
