@@ -21,13 +21,11 @@ public class Flame1 extends GameObject {
 
 	@Override
 	public void render(Graphics2D g) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void tick() {
-		// TODO Auto-generated method stub
 		
 	}
 

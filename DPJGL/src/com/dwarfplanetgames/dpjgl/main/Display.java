@@ -101,10 +101,6 @@ public class Display extends Canvas implements Runnable {
 		bs.show();
 	}
 	
-	public void openTerminal() {
-		//TODO initialize terminal
-	}
-	
 	public synchronized void stop() {
 		try {
 			thread.join();

@@ -1,6 +1,5 @@
 package com.dwarfplanetgames.dpjgl.main.system;
 
-
 public class Vector2D {
 
 	public FloatPoint from;
@@ -28,15 +27,25 @@ public class Vector2D {
 			}
 			return new FloatPoint(from.x + X, from.y + m * X);
 		}
+	}
 
-		/*
-		FloatPoint f = new FloatPoint(from.x, from.y);
-		if(to.x > from.x) f.x += dist;
-		if(to.x < from.x) f.x -= dist;
-		if(to.y > from.y) f.y += dist;
-		if(to.y < from.y) f.y -= dist;
-		return f;
-		*/
+	public FloatPoint motion(float dist) {
+		if (to.x == from.x) {
+			if (to.y > from.y) {
+				return new FloatPoint(0, from.y + dist - to.y);
+			} else if (to.y < from.y) {
+				return new FloatPoint(0, from.y - dist - to.y);
+			} else {
+				return new FloatPoint(0, 0);
+			}
+		} else {
+			float m = (to.y - from.y) / (to.x - from.x);
+			float X = (float) (Math.sqrt(Math.pow(dist, 2) / (Math.pow(m, 2) + 1)));
+			if (to.x < from.x) {
+				X *= -1;
+			}
+			return new FloatPoint(X, m * X);
+		}
 	}
 
 	public Side getSide() {
