@@ -36,6 +36,8 @@ public class WaterParticle extends GameObject {
 			case "water_particle":
 				//TODO add code for colliding with other water particles
 				break;
+				default:
+					break;
 			}
 		}
 	}
