@@ -11,6 +11,10 @@ import javax.swing.JFrame;
 
 public class Terminal extends Canvas {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private LinkedList<TerminalLine> lines = new LinkedList<TerminalLine>();
 	private JFrame frame;
 	

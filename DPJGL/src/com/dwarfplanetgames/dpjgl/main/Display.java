@@ -9,9 +9,15 @@ import java.awt.image.BufferStrategy;
 import javax.swing.JFrame;
 
 public class Display extends Canvas implements Runnable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6393818626729414718L;
 	//s
 	private Thread thread;
+	@SuppressWarnings("unused")
 	private int width, height;
+	@SuppressWarnings("unused")
 	private String title;
 	private JFrame frame;
 	private boolean running = false;
