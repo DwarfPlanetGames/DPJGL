@@ -33,7 +33,7 @@ public class Display extends Canvas implements Runnable {
 		addMouseListener(handler);
 		addMouseMotionListener(handler);
 		addKeyListener(handler);
-		core.init(this);
+		core.begin(this);
 	}
 	
 	public synchronized void start() {
@@ -58,6 +58,10 @@ public class Display extends Canvas implements Runnable {
 						temp.update();
 					}
 				}
+				for (int i = 0; i < handler.objects.size(); i++) {
+					GameObject temp = handler.objects.get(i);
+					temp.unconditionalTick();
+				}
 				time++;
 			}
 			render();
@@ -80,7 +84,7 @@ public class Display extends Canvas implements Runnable {
 		Graphics2D g = (Graphics2D) go;
 		
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, width, height);
+		g.fillRect(0, 0, getWidth(), getHeight());
 		g.setColor(Color.WHITE);
 		core.render(g);
 		for (int i = 0; i < handler.objects.size(); i++) {
@@ -93,6 +97,14 @@ public class Display extends Canvas implements Runnable {
 	
 	public void openTerminal() {
 		//TODO initialize terminal
+	}
+	
+	public synchronized void stop() {
+		try {
+			thread.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

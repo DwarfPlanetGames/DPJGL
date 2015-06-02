@@ -38,9 +38,9 @@ public class Terminal extends Canvas {
 	}
 	
 	public void print(String str, Color col) {
-		lines.add(new TerminalLine(str, col));
+		lines.addFirst(new TerminalLine(str, col));
 		if (lines.size() > getHeight() / 12 + 1) {
-			lines.removeFirst();
+			lines.removeLast();
 		}
 		render();
 	}
