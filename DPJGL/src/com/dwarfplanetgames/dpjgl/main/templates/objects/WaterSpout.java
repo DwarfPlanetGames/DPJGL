@@ -16,6 +16,7 @@ public class WaterSpout extends GameObject {
 		super(display, "water_spout", x, y, 1, 1);
 		this.radius = radius;
 		this.xm = xm; this.ym = ym;
+		this.color = color;
 	}
 
 	@Override
@@ -25,7 +26,12 @@ public class WaterSpout extends GameObject {
 
 	@Override
 	public void tick() {
-		display.handler.objects.add(new WaterParticle(display, x, y, radius, color));
+		if (time % radius == 0) {
+			WaterParticle w = new WaterParticle(display, x, y, radius, color);
+			w.velX = xm;
+			w.velY = ym;
+			display.handler.objects.add(w);
+		}
 	}
 
 	@Override

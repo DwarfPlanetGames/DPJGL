@@ -40,6 +40,12 @@ public class WaterParticle extends GameObject {
 					break;
 			}
 		}
+		/*
+		if (velX > radius) velX = radius;
+		if (velX < -radius) velX = -radius;
+		if (velY > radius) velY = radius;
+		if (velY < -radius) velY = -radius;
+		*/
 		if (x > display.getWidth() ||
 				y > display.getHeight()) {
 			dispose();
