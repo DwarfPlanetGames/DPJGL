@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
+import java.util.Random;
 
 import javax.swing.JFrame;
 
@@ -25,6 +26,8 @@ public class Display extends Canvas implements Runnable {
 	private int threadSleep = 3;
 	public Handler handler;
 	public int time = 0;
+	public static Terminal terminal;
+	public static final Random rand = new Random();
 	
 	public Display(int width, int height, String title, Core core) {
 		this.width = width;
@@ -33,6 +36,7 @@ public class Display extends Canvas implements Runnable {
 		this.core = core;
 		frame = new JFrame(title);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
 		frame.add(this);
 		frame.setSize(width, height);
 		handler = new Handler();
@@ -51,7 +55,12 @@ public class Display extends Canvas implements Runnable {
 		}
 	}
 	
+	public static void add(Terminal terminal) {
+		Display.terminal = terminal;
+	}
+	
 	public void run() {
+		requestFocus();
 		long startTime = System.nanoTime();
 		while (running) {
 			long newTime = System.nanoTime();

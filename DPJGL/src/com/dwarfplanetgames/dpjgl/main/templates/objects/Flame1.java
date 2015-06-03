@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 
 import com.dwarfplanetgames.dpjgl.main.Display;
 import com.dwarfplanetgames.dpjgl.main.GameObject;
+import com.dwarfplanetgames.dpjgl.main.system.Side;
 
 public class Flame1 extends GameObject {
 	
