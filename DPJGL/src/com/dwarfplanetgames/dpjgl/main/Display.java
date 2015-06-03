@@ -25,6 +25,7 @@ public class Display extends Canvas implements Runnable {
 	private int threadSleep = 3;
 	public Handler handler;
 	public int time = 0;
+	public static Terminal terminal;
 	
 	public Display(int width, int height, String title, Core core) {
 		this.width = width;
@@ -49,6 +50,10 @@ public class Display extends Canvas implements Runnable {
 			thread = new Thread(this, "game");
 			thread.start();
 		}
+	}
+	
+	public static void add(Terminal terminal) {
+		Display.terminal = terminal;
 	}
 	
 	public void run() {
