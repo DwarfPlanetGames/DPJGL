@@ -43,13 +43,29 @@ public class Display extends Canvas implements Runnable {
 		addMouseListener(handler);
 		addMouseMotionListener(handler);
 		addKeyListener(handler);
+		frame.setVisible(true);
+		core.begin(this);
+	}
+	
+	public Display(int width, int height, Core core) {
+		this.width = width;
+		this.height = height;
+		this.core = core;
+		frame = new JFrame(title);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
+		frame.add(this);
+		frame.setSize(width, height);
+		handler = new Handler();
+		addMouseListener(handler);
+		addMouseMotionListener(handler);
+		addKeyListener(handler);
 		core.begin(this);
 	}
 	
 	public synchronized void start() {
 		if (!running) {
 			running = true;
-			frame.setVisible(true);
 			thread = new Thread(this, "game");
 			thread.start();
 		}

@@ -146,6 +146,10 @@ public abstract class GameObject {
 			return false;
 		}
 	}
+	
+	public float distanceTo(GameObject o) {
+		return (float)(Math.sqrt(Math.pow(o.x - x, 2) + Math.pow(o.y - y, 2)));
+	}
 
 	public abstract void render(Graphics2D g);
 

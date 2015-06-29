@@ -17,6 +17,12 @@ public class Handler implements KeyListener, MouseListener, MouseMotionListener 
 	
 	public Handler() {
 		mouse = new Point();
+		for (int i = 0; i < keys.length; i++) {
+			keys[i] = false;
+		}
+		for (int i = 0; i < buttons.length; i++) {
+			buttons[i] = false;
+		}
 	}
 	
 	@Override
